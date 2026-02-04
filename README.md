@@ -4,7 +4,6 @@
 
 Boss Claude turns every coding session into an RPG-style experience where Claude levels up, earns rewards, and maintains perfect memory across all your repositories. No more re-explaining. No more lost context. Just pure productivity.
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/boss-claude?referralCode=EqGo9A&utm_medium=integration&utm_source=template&utm_campaign=generic)
 [![Skool Community](https://img.shields.io/badge/Skool-Join%20Community-blue?style=flat-square)](https://www.skool.com/boss-claude/about)
 
 > **For developers who refuse to repeat themselves.** Stop losing context. Stop re-explaining your codebase. Ship faster with an AI that actually remembers.
@@ -27,24 +26,6 @@ Boss Claude gives Claude **persistent memory** across every repository you work 
 - **Real-time Monitoring**: Watch agent activity in a companion window
 - **Career Stats**: Track total sessions, repos managed, and productivity metrics
 
-## Quick Start with Railway
-
-The fastest way to get Boss Claude running:
-
-1. **Click the Deploy button above** - Deploys Redis + PostgreSQL to Railway
-2. **Wait 60 seconds** - Services spin up automatically
-3. **Copy connection URLs** from your Railway dashboard:
-   - `REDIS_URL` (from Redis service)
-   - `DATABASE_URL` (from PostgreSQL service)
-4. **Run setup locally**:
-   ```bash
-   npm install -g @cpretzinger/boss-claude
-   boss-claude setup
-   ```
-5. **Paste the URLs when prompted** - Setup configures everything automatically
-
-That's it! Boss Claude is now ready to use in any repository.
-
 ## Installation
 
 ```bash
@@ -56,7 +37,7 @@ npm install -g @cpretzinger/boss-claude
 When you install Boss Claude, it automatically:
 
 1. **Creates `~/.boss-claude/`** - Secure configuration directory for your credentials
-2. **Auto-detects credentials** - Imports from Railway CLI, environment, or existing configs
+2. **Auto-detects credentials** - Imports from environment or existing configs
 3. **Configures Claude** - Injects "Conductor Mode" into `~/.claude/CLAUDE.md`
 
 After installation, Claude becomes **the Conductor** - an orchestrator who delegates work to specialized agents instead of doing everything directly. This makes Claude dramatically more efficient.

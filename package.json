@@ -1,6 +1,6 @@
 {
   "name": "@cpretzinger/boss-claude",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Boss Claude - Gamified AI assistant with persistent memory across all repos",
   "type": "module",
   "main": "lib/index.js",
@@ -15,17 +15,10 @@
     "./validators": "./lib/validators/index.js",
     "./agent-logger": "./lib/agent-logger.js",
     "./conductor-reminder": "./lib/conductor-reminder.js",
-    "./token-monitor": "./lib/token-monitor.js",
-    "./auto-monitor": "./lib/auto-monitor.js",
-    "./hierarchy-validator": "./lib/hierarchy-validator.js",
-    "./conductor-identity": "./lib/conductor-identity.js",
     "./conductor-banner": "./lib/conductor-banner.js",
     "./conductor-monitor": "./lib/conductor-monitor.js",
     "./output-formatter": "./lib/output-formatter.js",
-    "./claude-md-template": "./lib/claude-md-template.js",
-    "./skill-loader": "./lib/skill-loader.js",
-    "./skills": "./skills/index.js",
-    "./skills/core/*": "./skills/core/*.md"
+    "./skill-loader": "./lib/skill-loader.js"
   },
   "bin": {
     "boss": "bin/cli-public.js",
