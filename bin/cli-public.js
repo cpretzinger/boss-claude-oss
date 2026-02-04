@@ -18,7 +18,8 @@ import { cleanup } from '../lib/cleanup.js';
 import dotenv from 'dotenv';
 import { join } from 'path';
 import os from 'os';
-import { existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync, readdirSync } from 'fs';
+import path from 'path';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 
@@ -284,6 +285,7 @@ program
   ${chalk.green('status')}        Show your level, XP, and session count
   ${chalk.green('recall')} <query> Search your session memory
   ${chalk.green('save')} [note]   Save current session to memory
+  ${chalk.green('agent:start')} <name> Start an agent with memory pre-loaded
   ${chalk.green('upgrade')}       View pricing and upgrade options
   ${chalk.green('help')}          Show this help message
 
@@ -345,6 +347,64 @@ program
     console.log(chalk.gray('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'));
 
     await cleanExit(0);
+  });
+
+// =============================================================================
+// AGENT START - ADHD-friendly single command agent startup
+// =============================================================================
+program
+  .command('agent:start <name>')
+  .alias('agent start')
+  .description('Start an agent with its memory pre-loaded (ADHD-friendly)')
+  .action(async (name) => {
+    try {
+      const agentDir = path.join(os.homedir(), '.boss-claude', 'agents', name.toLowerCase());
+      const initPath = path.join(agentDir, 'INIT.md');
+      const memoryPath = path.join(agentDir, 'MEMORY.md');
+
+      // Check if agent exists
+      if (!existsSync(agentDir)) {
+        console.error(chalk.red(`Agent "${name}" not found at ${agentDir}`));
+        console.log(chalk.yellow('Available agents:'));
+        const agentsDir = path.join(os.homedir(), '.boss-claude', 'agents');
+        if (existsSync(agentsDir)) {
+          readdirSync(agentsDir).forEach(a => console.log(`  - ${a}`));
+        }
+        await cleanExit(1);
+        return;
+      }
+
+      // Read files
+      let prompt = '';
+      if (existsSync(initPath)) {
+        prompt += readFileSync(initPath, 'utf8') + '\n\n';
+      }
+      if (existsSync(memoryPath)) {
+        prompt += readFileSync(memoryPath, 'utf8');
+      }
+
+      if (!prompt.trim()) {
+        console.error(chalk.red(`No INIT.md or MEMORY.md found for agent "${name}"`));
+        await cleanExit(1);
+        return;
+      }
+
+      // Copy to clipboard (macOS)
+      const { execSync } = await import('child_process');
+      execSync('pbcopy', { input: prompt });
+
+      console.log(chalk.green(`✓ Agent ${name.toUpperCase()} context loaded to clipboard!`));
+      console.log(chalk.cyan('\nNext steps:'));
+      console.log(chalk.white('  1. Open a new Claude Code session'));
+      console.log(chalk.white('  2. Paste (Cmd+V) to initialize the agent'));
+      console.log(chalk.dim(`\n  Loaded: ${initPath}`));
+      console.log(chalk.dim(`          ${memoryPath}`));
+
+      await cleanExit(0);
+    } catch (error) {
+      console.error(chalk.red('Error:'), error.message);
+      await cleanExit(1);
+    }
   });
 
 // =============================================================================

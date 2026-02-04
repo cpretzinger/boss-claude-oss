@@ -21,6 +21,8 @@ Boss Claude gives Claude **persistent memory** across every repository you work 
 - **Never Repeat Yourself**: Claude remembers every conversation across all your projects
 - **Instant Context Recall**: Search past sessions with natural language queries
 - **Smart Delegation**: Claude automatically routes work to specialized agents for maximum efficiency
+- **🔥 Warm Agent Startup**: Agents wake up with full context — no "where were we?" ever again
+- **Auto-Synced Context**: Meta-conductor keeps all agents updated with current state hourly
 - **RPG Progression**: Watch Claude level up, earn XP, and build a token bank as you work
 - **Global Memory**: Works in ANY repository with a single `npm install -g`
 - **Real-time Monitoring**: Watch agent activity in a companion window
