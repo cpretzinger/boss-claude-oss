@@ -1,6 +1,6 @@
 {
   "name": "@cpretzinger/boss-claude",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Boss Claude - Gamified AI assistant with persistent memory across all repos",
   "type": "module",
   "main": "lib/index.js",
@@ -80,6 +80,7 @@
     "lib/setup/rollback.js",
     "lib/setup/summary.js",
     "lib/setup/verify-setup.js",
+    "lib/validators/agent.js",
     "lib/validators/config.js",
     "lib/validators/github.js",
     "lib/validators/index.js",
