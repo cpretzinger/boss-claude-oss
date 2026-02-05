@@ -106,7 +106,6 @@
     "demo:wizard": "node examples/setup-wizard.js",
     "demo:quick": "node examples/quick-test.js",
     "demo:watch": "node examples/agent-logging-demo.js",
-    "demo:token-monitor": "node examples/token-monitor-demo.js",
     "demo:conductor-monitor": "node examples/conductor-monitoring-demo.js",
     "demo:mode": "node examples/mode-enforcement-demo.js",
     "demo:redis-integration": "node examples/redis-integration-example.js",
