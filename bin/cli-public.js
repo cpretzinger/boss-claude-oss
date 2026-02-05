@@ -12,7 +12,7 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
 import { loadIdentity } from '../lib/identity.js';
-import { loadSession, saveSession } from '../lib/session.js';
+import { loadSession, saveSession, getEfficiencyStats } from '../lib/session.js';
 import { searchMemory, saveMemory } from '../lib/memory.js';
 import { cleanup } from '../lib/cleanup.js';
 import dotenv from 'dotenv';
@@ -161,6 +161,22 @@ program
 
       if (repo) {
         console.log(chalk.gray(`\n  Repository: ${repo.name}`));
+      }
+
+      // Display efficiency stats
+      try {
+        const efficiencyStats = await getEfficiencyStats('conductor');
+        if (efficiencyStats && (efficiencyStats.conductor_tokens > 0 || efficiencyStats.agent_tokens > 0)) {
+          console.log(chalk.gray('\n  ---------------------------------------------'));
+          console.log(chalk.white('  ⚡ Session Efficiency:'));
+          console.log(chalk.white(`     Conductor Tokens: ${chalk.dim(efficiencyStats.conductor_tokens.toLocaleString())}`));
+          console.log(chalk.white(`     Agent Tokens: ${chalk.green(efficiencyStats.agent_tokens.toLocaleString())}`));
+          console.log(chalk.white(`     Efficiency Ratio: ${chalk.yellow(efficiencyStats.efficiency_ratio)}`));
+          console.log(chalk.white(`     Delegations: ${chalk.blue(efficiencyStats.delegations)}`));
+          console.log(chalk.white(`     Bonus XP: ${chalk.cyan('+' + efficiencyStats.projected_bonus_xp)}`));
+        }
+      } catch (error) {
+        // Silently skip efficiency stats if there's an error
       }
 
       console.log(chalk.gray(`
