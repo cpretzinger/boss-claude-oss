@@ -39,8 +39,6 @@ const PRIVATE_PATTERNS = [
   /^lib\/agent-comms\.js$/,
 
   // Private bin files
-  /^bin\/boss-claude\.js$/,
-  /^bin\/setup-wizard\.js$/,
   /^bin\/conductor-guard\.js$/,
   /^bin\/conductor-guard\.sh$/,
 
