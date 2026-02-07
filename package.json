@@ -1,6 +1,6 @@
 {
   "name": "@cpretzinger/boss-claude",
-  "version": "2.0.4",
+  "version": "2.2.0",
   "description": "Boss Claude - Gamified AI assistant with persistent memory across all repos",
   "type": "module",
   "main": "lib/index.js",
@@ -28,7 +28,6 @@
     "README.md",
     "LICENSE",
     "CHANGELOG.md",
-    "CONDUCTOR-RUBRIC.md",
     "config/.env.example",
     "scripts/install.js",
     "scripts/benchmark-memory.js",
