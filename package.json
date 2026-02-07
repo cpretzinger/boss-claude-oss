@@ -41,6 +41,8 @@
     "bin/cli-public.js",
     "bin/rollback.js",
     "bin/commands/mode.js",
+    "bin/boss-claude.js",
+    "bin/setup-wizard.js",
     "lib/README.md",
     "lib/index.js",
     "lib/redis.js",
