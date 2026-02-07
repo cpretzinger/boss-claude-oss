@@ -21,8 +21,8 @@
     "./skill-loader": "./lib/skill-loader.js"
   },
   "bin": {
-    "boss": "bin/cli-public.js",
-    "boss-claude": "bin/cli-public.js"
+    "boss": "bin/boss-claude.js",
+    "boss-claude": "bin/boss-claude.js"
   },
   "files": [
     "README.md",
