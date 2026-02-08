@@ -16,46 +16,39 @@ import path from 'path';
 
 // PRIVATE FILE PATTERNS - These should NEVER be published
 const PRIVATE_PATTERNS = [
-  // Private directories
-  /^lib\/agents\//,
-  /^hooks\//,
+  // Private directories (these are NOT in package.json files array)
   /^DOCS-INTERNAL\//,
   /^scripts-internal\//,
-
-  // Private lib files
-  /^lib\/work-order\.js$/,
-  /^lib\/work-order-logger\.js$/,
-  /^lib\/conductor-tool-interceptor\.js$/,
-  /^lib\/conductor-wrapper\.js$/,
-  /^lib\/tool-wrapper\.js$/,
-  /^lib\/tool-wrapper-integration\.js$/,
-  /^lib\/delegation-strategies\.js$/,
-  /^lib\/mode-enforcer\.js$/,
-  /^lib\/orchestrator-gate\.js$/,
-  /^lib\/prompt-injector\.js$/,
-  /^lib\/boundary-parser\.js$/,
-  /^lib\/context-scribe\.js$/,
-  /^lib\/task-agent-worker\.js$/,
-  /^lib\/agent-comms\.js$/,
-
-  // Private bin files
-  /^bin\/conductor-guard\.js$/,
-  /^bin\/conductor-guard\.sh$/,
+  /^\.github\/workflows\/private/,
 
   // Environment files (except examples)
   /^\.env$/,
   /^\.env\.local$/,
   /^\.env\.production$/,
+  /^\.env\..*$/,
 
-  // Stripe/payment related
-  /STRIPE/i,
+  // Stripe/payment related files
   /^docs\/STRIPE-PRODUCTS\.md$/,
+
+  // Test credentials or keys
+  /private[-_]key/i,
+  /secret[-_]key/i,
+];
+
+// ALLOWED FILES - These are safe even if they match a pattern above
+const ALLOWED_FILES = [
+  'lib/setup/import-credentials.js',  // Utility for importing credentials, contains no actual credentials
 ];
 
 /**
  * Check if a file path matches any private pattern
  */
 function isPrivateFile(filePath) {
+  // Check if file is explicitly allowed
+  if (ALLOWED_FILES.includes(filePath)) {
+    return false;
+  }
+
   return PRIVATE_PATTERNS.some(pattern => pattern.test(filePath));
 }
 
