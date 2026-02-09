@@ -1,24 +1,3 @@
-Hey — thanks for checking out boss-claude.                                              
-                                                                                          
-  If the install didn't work for you, I'm really sorry. Versions 2.2.0-2.2.1 had a        
-  packaging bug that broke fresh installs completely. That's on me.                       
-                                                                                          
-  To fix:                                                                                 
-  npm install -g @cpretzinger/boss-claude@latest                                          
-                                                                                          
-  If you gave up before seeing what this thing can do — I get it. But if you're willing to
-   give it another shot with v2.2.2, I'd appreciate it.                                   
-                                                                                          
-  And if it clicks for you, a ⭐ on the repo means a lot:                                 
-  https://github.com/cpretzinger/boss-claude                                              
-                                                                                          
-  Thanks for your patience. Building in public means shipping bugs sometimes. Appreciate  
-  you being here.                                                                         
-                                                                                          
-  — Craig & ONYX  
-
-
-
 # Boss Claude
 
 **Transform Claude into a persistent, leveling AI that remembers everything across every project.**
